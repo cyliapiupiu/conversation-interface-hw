@@ -1,0 +1,11 @@
+Our Guess   Ground Truth   Coppus                
+  +           +            find starbucks     TP /find\s(.+)
+  +           +            find starbucks and Burger King   TP /find\s(.+)\sand\s(.+)/
+  +           +            find Mcdonald's           TP
+  +           _            find a parking place      FP
+  +           _            find lANDS End            FP
+  +           _            find a gam                FP
+  +           _            find a public restroom    FP
+  _           +            looking for starbucks     FN
+  _           +            want to have a cup of coffee    FN
+  _           +            feeling hungry         FN
