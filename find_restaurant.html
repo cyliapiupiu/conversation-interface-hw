@@ -56,7 +56,7 @@
   function decide_response(user_said) {
     var response;
     var find_re1 = /find (?:a|the) restaurants?\s(.+)/i;  // creating a regular expression
-    var find_re2 = /find a restaurant\s(.+)\sand\s(.+)/i; 
+    var find_re2 = /find (?:a|the) restaurant\s(.+)\sand\s(.+)/i; 
     var find_re3 = /find a restaurant\s(.+)\sby\s(.+)/i; 
     var find_parse_array1 = user_said.match(find_re1); // parsing the input string with the regular expression
     var find_parse_array2 = user_said.match(find_re2); 
