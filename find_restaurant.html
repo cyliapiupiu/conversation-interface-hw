@@ -55,21 +55,23 @@
    */
   function decide_response(user_said) {
     var response;
-    var find_re1 = /find restaurant\s(.+)/i;  // creating a regular expression
-    var find_re2 = /find restaurant\sand\s(.+)/i; 
-    var find_re3 = /find restaurant\sby\s(.+)/i; 
-    var find_parse_array1 = user_said.match(find_re1) // parsing the input string with the regular expression
-    var find_parse_array2 = user_said.match(find_re2) 
-    var find_parse_array3 = user_said.match(find_re3) 
-    //console.log(find_parse_array) // let's print the array content to the console log so we understand 
+    var find_re1 = /find (?:a|the) restaurants?\s(.+)/i;  // creating a regular expression
+    var find_re2 = /find a restaurant\s(.+)\sand\s(.+)/i; 
+    var find_re3 = /find a restaurant\s(.+)\sby\s(.+)/i; 
+    var find_parse_array1 = user_said.match(find_re1); // parsing the input string with the regular expression
+    var find_parse_array2 = user_said.match(find_re2); 
+    var find_parse_array3 = user_said.match(find_re3); 
+    console.log("find_parse_array1:" + find_parse_array1); // let's print the array content to the console log so we understand 
                                   // what's inside the array.
+    console.log("find_parse_arra2:" + find_parse_array2);
+    console.log("find_parse_array3:" + find_parse_array3);
 
     if (find_parse_array1 && state === "initial") {
-      response = "ok, finding " + find_parse_array[1];
+      response = "ok, finding " + find_parse_array1[1];
     } else if (find_parse_array2 && state === "initial") {
-      response = "finding restaurant"+find_parse_array2[1]+"and find restaurant"+find_parse_array2[2];
+      response = "finding restaurant " + find_parse_array2[1] + " and find restaurant " +find_parse_array2[2];
     } else if (find_parse_array3 && state === "initial") {
-      response = "ok,finding" + find_parse_array3[1]+"by"+find_parse_array3[2]；
+      response = "ok,finding" + find_parse_array3[1] + " by " + find_parse_array3[2];
       state = "initial"
     } else if (user_said.toLowerCase().includes("bye")){
       response = "good bye to you";
